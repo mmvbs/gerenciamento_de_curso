@@ -13,3 +13,14 @@ class UserProfileExample(models.Model):
     class Meta:
         verbose_name = "Profile"
         verbose_name_plural = "Profiles"
+
+class aluno(models.Model):
+    nome = models.CharField(max_length=100)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    matricula = models.CharField(max_length=10)
+
+    def __str__(self):
+        return self.nome
+    class Meta:
+        verbose_name = "Aluno"
+        verbose_name_plural = "Alunos"
