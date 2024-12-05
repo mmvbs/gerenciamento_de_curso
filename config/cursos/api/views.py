@@ -65,7 +65,8 @@ class inscricaoViewSet(ModelViewSet):
         if not in_database:
             nova_inscricao = inscricao.objects.create(
                 aluno=serializer.validated_data['aluno'],
-                curso=serializer.validated_data['curso']
+                curso=serializer.validated_data['curso'],
+                data=serializer.validated_data['data']
             )
 
             serializer_saida = inscricaoSerializer(nova_inscricao)
