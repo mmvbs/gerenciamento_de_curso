@@ -18,9 +18,14 @@ from django.contrib import admin
 from django.urls import path
 from rest_framework.routers import SimpleRouter
 from users.api.views import alunoViewSet
+from cursos.api.views import cursoViewSet, inscricaoViewSet
+
 
 router = SimpleRouter()
 router.register("alunos", alunoViewSet, basename="alunos")
+router.register("cursos", cursoViewSet, basename="cursos")
+router.register("inscricoes", inscricaoViewSet, basename="inscricoes")
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]+router.urls
