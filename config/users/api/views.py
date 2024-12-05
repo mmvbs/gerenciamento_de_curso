@@ -49,3 +49,8 @@ class ProfessorViewSet(ModelViewSet):
 
         serializer_saida = ProfessorSerializer(novo_professor)
         return Response({"Info": "Cadastro do professor realizado!", "data":serializer_saida.data}, status=status.HTTP_201_CREATED)
+    
+    def buscar_professor(self, request):
+        busca = Professor.objects.all()
+        serializer = ProfessorSerializer(busca, many=True)
+        return Response({"Info":"Lista de professores", "data":serializer.data}, status=status.HTTP_200_OK)
