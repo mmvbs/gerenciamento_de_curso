@@ -19,11 +19,13 @@ from django.urls import path
 from rest_framework.routers import SimpleRouter
 from users.api.views import alunoViewSet
 from cursos.api.views import cursoViewSet, inscricaoViewSet
+from users.api.views import ProfessorViewSet
 
 
 router = SimpleRouter()
 router.register("alunos", alunoViewSet, basename="alunos")
 router.register("cursos", cursoViewSet, basename="cursos")
+router.register("professores",ProfessorViewSet, basename="professores")
 router.register("inscricoes", inscricaoViewSet, basename="inscricoes")
 
 urlpatterns = [

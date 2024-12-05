@@ -10,7 +10,7 @@ from cursos.models import curso, inscricao
 
 logger = logging.getLogger("cursos")
 class cursoViewSet(ModelViewSet):
-    cursoSerializer = cursoSerializer
+    serializer_class = cursoSerializer
     permission_classes = [AllowAny]
     queryset = curso.objects.all()
 
@@ -42,14 +42,14 @@ class cursoViewSet(ModelViewSet):
     
     #from rest_framework.decorators import action
     #http://localhost:8000/cursos/buscar/
-    #@action(methods=['get'],detail=False,url_path="buscar")
+    # #@action(methods=['get'],detail=False,url_path="buscar")
     def buscar_cursos(self, request):
         busca = curso.objects.all()
         serializer = cursoSerializer(busca, many=True)
         return Response({"Info":"Lista de cursos", "data":serializer.data}, status=status.HTTP_200_OK)
     
 class inscricaoViewSet(ModelViewSet):
-    inscricaoSerializer = inscricaoSerializer
+    serializer_class = inscricaoSerializer
     permission_classes = [IsAuthenticated]
     queryset = inscricao.objects.all()
 

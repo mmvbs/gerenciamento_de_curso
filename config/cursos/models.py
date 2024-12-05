@@ -3,7 +3,7 @@ from users.models import aluno
 # Create your models here.
 class curso(models.Model):
    nome = models.CharField(max_length=100)
-   vagas = models.IntegerField(max)
+   vagas = models.IntegerField()
    titulo = models.CharField(max_length=100)
    descricao = models.CharField(max_length=100)
    categoria = models.CharField(max_length=100)
