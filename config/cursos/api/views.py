@@ -1,5 +1,6 @@
 import logging
 from rest_framework import status
+from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import AllowAny, IsAuthenticated, IsAdminUser
@@ -40,9 +41,8 @@ class cursoViewSet(ModelViewSet):
             logger.error("curso já cadastrado!")
             return Response({"Info": "Falha ao tentar cadastrar o curso!"}, status=status.HTTP_409_CONFLICT)
     
-    #from rest_framework.decorators import action
-    #http://localhost:8000/cursos/buscar/
-    # #@action(methods=['get'],detail=False,url_path="buscar")
+
+    @action(methods=['get'],detail=False,url_path="buscar")
     def buscar_cursos(self, request):
         busca = curso.objects.all()
         serializer = cursoSerializer(busca, many=True)

@@ -1,4 +1,5 @@
 from rest_framework.viewsets import ModelViewSet
+from rest_framework.decorators import action
 from rest_framework.permissions import AllowAny
 from users.models import aluno, Professor
 from users.api.serializers import alunoSerializer, ProfessorSerializer, ProfessorCreateSerializer
@@ -49,7 +50,7 @@ class ProfessorViewSet(ModelViewSet):
 
         serializer_saida = ProfessorSerializer(novo_professor)
         return Response({"Info": "Cadastro do professor realizado!", "data":serializer_saida.data}, status=status.HTTP_201_CREATED)
-    
+    @action(methods=['get'],detail=False,url_path="buscar")
     def buscar_professor(self, request):
         busca = Professor.objects.all()
         serializer = ProfessorSerializer(busca, many=True)
